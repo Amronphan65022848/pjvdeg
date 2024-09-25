@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
+  constructor(private router: Router) {}
+
+  logout() {
+    // ลบ token ออกจาก localStorage
+    localStorage.removeItem('token');
+
+    // นำทางไปยังหน้า login
+    this.router.navigate(['/login']);
+  }
 }

@@ -1,4 +1,3 @@
-
 .content{
     /* border:  solid black 1px; */
     padding: 100px 80px;
@@ -7,52 +6,64 @@
     /* align-items: center; */
     /* justify-content: center; */
 }
-
-.total{
+.total {
     width: 100%;
-  /* border:  solid black 1px; */
-      /* align-items: start; */
-    justify-content: center;
     display: flex;
     flex-direction: column;
     row-gap: 30px;
 }
-h2{
+
+h2 {
     text-align: center;
-    font-size: 36px;
+    font-size: 28px; /* Adjusted font size for smaller screens */
 }
 
-.data{
-    /* background-color: antiquewhite; */
+.data {
     display: flex;
     flex-direction: column;
-    row-gap: 50px;
+    row-gap: 30px; /* Reduced gap */
     justify-content: center;
-    /* align-items: center; */
-    
 }
-.box{
-    gap: 50px;
+
+.box {
     display: flex;
-   
+    flex-direction: column; /* Change to column for smaller screens */
+    align-items: center; /* Center content */
+    gap: 20px; /* Reduced gap */
 }
-.discipstion{
-   row-gap: 20px;
-    width: 600px;
+
+.discipstion {
+    width: auto; /* Allow width to adjust */
     display: flex;
     flex-direction: column;
-
-}
-.discipstion p{
-    margin-top: 0;
-    font-size: 15px;
-    font-family: 'Rato', sans-serif;
+    row-gap: 10px; /* Reduced gap */
 }
 
-.discipstion h3{
-    font-size: 35px;
+.discipstion p {
     margin-top: 0;
+    font-size: 14px; /* Adjusted font size */
 }
-.line{
+
+.discipstion h3 {
+    font-size: 24px; /* Adjusted font size */
+}
+
+.line {
     border: solid rgb(118, 117, 117) 1px;
+    width: 100%; /* Ensure line takes full width */
+}
+
+/* Media Queries for responsiveness */
+@media (min-width: 768px) {
+    .box {
+        flex-direction: row; /* Change back to row on larger screens */
+        align-items: center; /* Center content */
+        gap: 100px; /* Reduced gap */
+    }
+    .discipstion {
+        width: 600px; /* Set width for larger screens */
+    }
+    h2 {
+        font-size: 36px; /* Original font size */
+    }
 }

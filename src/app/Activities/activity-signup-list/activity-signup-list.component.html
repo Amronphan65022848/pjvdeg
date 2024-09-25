@@ -1,0 +1,29 @@
+<app-search></app-search>
+
+<div class="dtn">
+    <h2 style="text-align:center;">Volunteer List</h2>
+<table>
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Name</th>
+        <th>Tel.</th>
+        <!-- <th>Date</th> -->
+        <th>Information</th>
+        <th>Emergency Contact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let activity of activities; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ activity.name }}</td>
+        <!-- <td>{{ activity.date }}</td> -->
+        <td>{{ activity.tel }}</td>
+        <td><a [href]="activity.informationLink"><i class="fas fa-link"></i></a></td>
+        <td>
+          {{ activity.Contact }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

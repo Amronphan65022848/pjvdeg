@@ -9,7 +9,7 @@
                 </a>
             </div>
             <div class="PG2">
-                <h3>Jane Doe</h3>
+                <h3>{{ user.firstName }} {{ user.lastName }}</h3>
             </div>
             <div class="PG3">
                 <a href="#">
@@ -30,8 +30,8 @@
 
             <div class="border"></div>
             <div class="PG4">
-                <div class="left"> <b>E-Mail : janedoe1999&#64;gmail.com</b></div>
-                <div class="right"><b>Phone Number : 095-0185468</b></div>
+                <div class="left"> <b>E-Mail :{{ user.email }}</b></div>
+                <div class="right"><b>Phone Number :{{ user.phone }}</b></div>
                 
             </div>
             <div class="border"></div>

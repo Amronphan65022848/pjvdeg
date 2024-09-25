@@ -19,11 +19,13 @@ nav{
 }
 .Menu{
     display: flex;
-    
+    /* background-color: aliceblue; */
+    justify-content: space-between;
+    width: 100%;
 
 }
 .Menu li{
-    display: grid;
+    /* display: grid; */
     list-style: none;
     display: flex;
     gap: 30px;

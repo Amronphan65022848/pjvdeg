@@ -20,7 +20,16 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FooterComponent } from './profile/component/footer/footer.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginGuestComponent } from './login-guest/login-guest.component';
+import { AdminListComponent } from './admin-list/admin-list.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { SearchBarsComponent } from './admin-list/components/search-bars/search-bars.component';
+import { ActivitySignupListComponent } from './Activities/activity-signup-list/activity-signup-list.component';
+import { SearchComponent } from './Activities/activity-signup-list/components/search/search.component';
+import { DonationComponent } from './donation/donation.component'; // Import FormsModule her
 
 
 @NgModule({
@@ -43,12 +52,22 @@ import { FooterComponent } from './profile/component/footer/footer.component';
     NavbarComponent,
     ProfileComponent,
     FooterComponent,
-   
+    LoginGuestComponent,
+    AdminListComponent,
+    SearchBarsComponent,
+    ActivitySignupListComponent,
+    SearchComponent,
+    DonationComponent,
+    
     
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    CommonModule,
+    FormsModule // Add FormsModule to the imports array
   ],
   providers: [],
   bootstrap: [AppComponent]

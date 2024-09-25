@@ -10,6 +10,7 @@ export class CarousalComponent implements AfterViewInit {
   currentIndex = 0;
   totalItems = 5; // Adjust based on the actual number of items
   itemIndexes = Array.from({ length: this.totalItems }, (_, i) => i);
+  autoSlideInterval: any;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
@@ -18,10 +19,20 @@ export class CarousalComponent implements AfterViewInit {
       // Safe to access the DOM
       this.updateCarousel(this.currentIndex);
 
-      // Auto-slide
-      setInterval(() => {
-        this.nextSlide();
-      }, 3000);
+      // Auto-slide every 3 seconds
+      this.startAutoSlide();
+    }
+  }
+
+  startAutoSlide() {
+    this.autoSlideInterval = setInterval(() => {
+      this.nextSlide();
+    }, 3000);
+  }
+
+  stopAutoSlide() {
+    if (this.autoSlideInterval) {
+      clearInterval(this.autoSlideInterval);
     }
   }
 
@@ -48,12 +59,16 @@ export class CarousalComponent implements AfterViewInit {
   }
 
   nextSlide() {
+    this.stopAutoSlide();
     this.currentIndex = (this.currentIndex + 1) % this.totalItems;
     this.updateCarousel(this.currentIndex);
+    this.startAutoSlide();
   }
 
   prevSlide() {
+    this.stopAutoSlide();
     this.currentIndex = (this.currentIndex - 1 + this.totalItems) % this.totalItems;
     this.updateCarousel(this.currentIndex);
+    this.startAutoSlide();
   }
 }

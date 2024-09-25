@@ -28,14 +28,25 @@
     height: 69px;
     
 }
-.body {
-    
+form{
     width: 70%;
     display: flex;
     justify-content: center;
+    /* align-items: center; */
     flex-direction: column;
     row-gap: 20px;
+}
+.body {
     
+    /* width: 70%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 20px; */
+    
+}
+form button{
+    align-items: center;
 }
 .top {
     

@@ -1,0 +1,31 @@
+<app-search-bars></app-search-bars>
+<div class="dtn">
+    <h2 style="text-align:center;">Activity List</h2>
+<table>
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Activity Name</th>
+        <th>Date</th>
+        <th>Information</th>
+        <th>Files</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let activity of activities; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ activity.name }}</td>
+        <td>{{ activity.date }}</td>
+        <td><a [href]="activity.informationLink"><i class="fas fa-link"></i></a></td>
+        <td><a [href]="activity.filesLink"><i class="fas fa-link"></i></a></td>
+        <td>
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="activity.status" />
+            <span class="slider round"></span>
+          </label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
