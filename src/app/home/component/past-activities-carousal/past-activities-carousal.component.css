@@ -1,0 +1,76 @@
+.slider-content {
+    padding: 50px 40px;
+    /* align-items: center; */
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+
+}
+
+.right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   /* padding: 1px; */
+}
+
+.right img{
+    margin-top: 6px;
+    
+}
+.right a{
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none; 
+    color: black;
+}
+
+.text {
+    padding: 25px;
+    /* height: 80px; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+span{
+    font-size: 24px;
+}
+.slider-img {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    overflow-x: scroll;
+    /* เพิ่มการเลื่อนในแนวนอน */
+    white-space: nowrap;
+    /* ทำให้รูปภาพอยู่ในบรรทัดเดียว */
+    scrollbar-width: none;
+    /* ซ่อน scrollbar บน Firefox */
+    -ms-overflow-style: none;
+    /* ซ่อน scrollbar บน Internet Explorer */
+}
+
+.slider-img img {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.slider-img img:hover {
+    transform: scale(1.05);
+}
+
+
+
+.slider-img::-webkit-scrollbar {
+    display: none;
+    /* ซ่อน scrollbar บน Chrome, Safari และ Opera */
+}
+
+.slider-img img {
+    margin-right: 10px;
+    /* เพิ่มช่องว่างระหว่างรูปภาพ */
+}
