@@ -30,8 +30,8 @@
         <td>{{ activity.activityId }}</td>
         <td>{{ activity.activityName }}</td>
         <td>{{ activity.startDate }} - {{ activity.endDate }} </td>
-        <td><a [href]="activity.informationLink"><i class="fas fa-link"></i></a></td>
-        <td><a [href]="activity.filesLink"><i class="fas fa-link"></i></a></td>
+        <td><a href="{{ activity.informationLink }}" target="_blank"><i class="fas fa-link"></i></a></td>
+        <td><a (click)="goToInformation(activity.activityId)" style="cursor:pointer;"><i class="fas fa-link"></i></a></td>
         <td>
           <label class="switch">
             <input type="checkbox" [(ngModel)]="activity.status" (change)="updateActivityStatus(activity)"

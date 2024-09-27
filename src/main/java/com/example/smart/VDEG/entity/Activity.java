@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 import java.util.List;
 
+
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -36,7 +38,9 @@ public class Activity {
     private LocalDate endDate;
     @Column(nullable = false)
     private String activityImageUrl;
-
+    @Column(nullable = true)
+    private String informationLink;
+    
     // เก็บรายชื่อ URL ของผู้สนับสนุนเป็น List ของ String
     @ElementCollection
     private List<String> sponsors;

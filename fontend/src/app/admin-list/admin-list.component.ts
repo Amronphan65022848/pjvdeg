@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-list',
@@ -10,7 +11,7 @@ export class AdminListComponent implements OnInit {
   activities: any[] = [];
   loading: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private router: Router) { }
 
   ngOnInit() {
     this.loading = true;
@@ -29,7 +30,7 @@ export class AdminListComponent implements OnInit {
       complete: () => {
         this.loading = false; // Stop loading
       }
-      
+
     });
   }
 
@@ -37,24 +38,27 @@ export class AdminListComponent implements OnInit {
     this.loading = true;
     // Send the updated status directly as a boolean
     this.http.put(`http://localhost:8080/api/activities/${activity.activityId}/status`, activity.status).subscribe({
-        
-        next: (response) => {
-          
-            console.log('Activity status updated successfully:', response);
-        },
-        error: (error) => {
-            console.error('Failed to update activity status:', error);
-        },
-        complete: () => {
-          this.loading = false; // Stop loading
-        }
+
+      next: (response) => {
+
+        console.log('Activity status updated successfully:', response);
+      },
+      error: (error) => {
+        console.error('Failed to update activity status:', error);
+      },
+      complete: () => {
+        this.loading = false; // Stop loading
+      }
     });
-}
+  }
 
-gotoAdmin() {
-  window.location.href = '/admin';
-}
+  gotoAdmin() {
+    window.location.href = '/admin';
+  }
 
+  goToInformation(activityId: number): void {
+    this.router.navigate(['/activity-files', activityId]);
+  }
 
   // activities = [
   //   {

@@ -13,6 +13,7 @@ import { LoginGuestComponent } from './login-guest/login-guest.component';
 import { AdminListComponent } from './admin-list/admin-list.component';
 import { ActivitySignupListComponent } from './Activities/activity-signup-list/activity-signup-list.component';
 import { DonationComponent } from './donation/donation.component';
+import { ActivityFilesComponent } from './Activities/activity-files/activity-files.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },  // เปลี่ยนเส้นทางเริ่มต้นเป็นหน้า login
@@ -25,12 +26,13 @@ const routes: Routes = [
   { path: 'activity-close', component: ActivityClosedSignupComponent },
   { path: 'activity-sinup-list', component: ActivitySignupListComponent },
   { path: 'admin', component: ActivityCreationAdminComponent },
-  { path: 'admin-list', component: AdminListComponent},
+  { path: 'admin-list', component: AdminListComponent },
   { path: 'donation', component: DonationComponent },
   { path: 'profile', component: ProfileComponent },
-  {path:'login-guest',component : LoginGuestComponent}
+  { path: 'login-guest', component: LoginGuestComponent },
+  { path: 'activity-files/:activityId', component: ActivityFilesComponent },
 
- 
+
 
 ];
 
@@ -38,6 +40,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { 
-  
+export class AppRoutingModule {
+
 }

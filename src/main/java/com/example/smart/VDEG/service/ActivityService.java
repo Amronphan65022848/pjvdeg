@@ -1,7 +1,6 @@
 package com.example.smart.VDEG.service;
 
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,7 +42,8 @@ public class ActivityService {
             activity.setEndDate(updatedActivity.getEndDate());
             activity.setActivityImageUrl(updatedActivity.getActivityImageUrl());
             activity.setStatus(updatedActivity.isStatus());
-            activity.setSponsors(updatedActivity.getSponsors());  // ตั้งค่า sponsors เป็น List<String>
+            activity.setSponsors(updatedActivity.getSponsors()); 
+            activity.setInformationLink(updatedActivity.getInformationLink()); // ตั้งค่า sponsors เป็น List<String>
             return activityRepository.save(activity);
         }).orElseGet(() -> {
             updatedActivity.setActivityId(id);
@@ -57,6 +57,8 @@ public class ActivityService {
             return activityRepository.save(activity); // Save the updated activity
         });
     }
+
+   
 
     
 

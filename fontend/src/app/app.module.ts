@@ -31,7 +31,8 @@ import { ActivitySignupListComponent } from './Activities/activity-signup-list/a
 import { SearchComponent } from './Activities/activity-signup-list/components/search/search.component';
 import { DonationComponent } from './donation/donation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; // Import FormsModule her
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ActivityFilesComponent } from './Activities/activity-files/activity-files.component'; // Import FormsModule her
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; /
     ActivitySignupListComponent,
     SearchComponent,
     DonationComponent,
+    ActivityFilesComponent,
     
     
   ],
