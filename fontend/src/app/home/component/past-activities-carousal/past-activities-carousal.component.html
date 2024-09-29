@@ -1,7 +1,7 @@
 <div class="slider-content">
     <div class="text">
       <div class="left">
-        <span>Current Activities</span>
+        <span>Past Activities</span>
       </div>
       <div class="right">
         <a href="/activity">
@@ -13,12 +13,7 @@
     </div>
   
     <div class="slider-img" #slider>
-      <img src="../../../../assets/imgs/carousal/slide/Slide1.png" alt="">
-      <img src="../../../../assets/imgs/carousal/slide/Slide2.png" alt="">
-      <img src="../../../../assets/imgs/carousal/slide/Slide3.png" alt="">
-      <img src="../../../../assets/imgs/carousal/slide/Slide4.png" alt="">
-      <img src="../../../../assets/imgs/carousal/slide/Slide5.png" alt="">
-      <img src="../../../../assets/imgs/carousal/slide/Slide6.png" alt="">
+      <img *ngFor="let activity of activities" [src]="activity.activityImageUrl" alt="Activity Image">
     </div>
   </div>
   

@@ -8,7 +8,12 @@ import com.example.smart.VDEG.entity.Activity;
 import com.example.smart.VDEG.repository.ActivityRepository;
 
 import java.util.List;
+import java.util.Map;
+
+
+
 import java.util.Optional;
+
 
 @Service
 public class ActivityService {
@@ -51,6 +56,28 @@ public class ActivityService {
         });
     }
 
+    public Optional<Activity> updateInformationLink(Long activityId, String informationLink) {
+        // ค้นหา Activity จาก activityId
+        Optional<Activity> activityOptional = activityRepository.findById(activityId);
+
+        if (activityOptional.isPresent()) {
+            Activity activity = activityOptional.get();
+            activity.setInformationLink(informationLink); // อัปเดตฟิลด์ informationLink
+            activityRepository.save(activity); // บันทึกลงในฐานข้อมูล
+            return Optional.of(activity);
+        }
+
+        return Optional.empty(); // หากไม่พบ Activity
+    }
+
+    public List<Map<String, Object>> getActiveActivities() {
+        return activityRepository.findActiveActivities();
+    }
+
+    public List<Map<String, Object>> getActiveDetail() {
+        return activityRepository.findActiveDetail();
+    }
+
     public Optional<Activity> updateActivityStatus(Long id, boolean status) {
         return activityRepository.findById(id).map(activity -> {
             activity.setStatus(status); // Update only the status
@@ -59,7 +86,17 @@ public class ActivityService {
     }
 
    
-
+    public Optional<Activity> incrementVolunteerAmount(Long activityId) {
+        Optional<Activity> activityOptional = activityRepository.findById(activityId);
+        
+        if (activityOptional.isPresent()) {
+            Activity activity = activityOptional.get();
+            activity.setTotalvolunteerAmount(activity.getTotalvolunteerAmount() + 1);
+            activityRepository.save(activity);
+        }
+        
+        return activityOptional;
+    }
     
 
     // ลบกิจกรรมตาม ID

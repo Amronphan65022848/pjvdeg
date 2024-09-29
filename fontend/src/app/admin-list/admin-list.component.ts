@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-list',
@@ -8,10 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-list.component.css']
 })
 export class AdminListComponent implements OnInit {
+
+
   activities: any[] = [];
   loading: boolean = false;
 
-  constructor(private http: HttpClient,private router: Router) { }
+
+  constructor(private http: HttpClient,private router: Router) {}
 
   ngOnInit() {
     this.loading = true;
@@ -21,8 +25,8 @@ export class AdminListComponent implements OnInit {
   fetchActivities() {
     this.http.get<any[]>('http://localhost:8080/api/activities').subscribe({
       next: (data) => {
-        this.activities = data; // Store the fetched activities
-        console.log('Fetched activities:', this.activities); // Log the fetched data
+        this.activities = data.sort((a, b) => a.activityId - b.activityId); // เรียงตาม activityId
+        console.log('Fetched and sorted activities:', this.activities); // Log กิจกรรมที่ถูกเรียงแล้ว
       },
       error: (error) => {
         console.error('Failed to fetch activities:', error); // Handle error
@@ -30,7 +34,6 @@ export class AdminListComponent implements OnInit {
       complete: () => {
         this.loading = false; // Stop loading
       }
-
     });
   }
 
@@ -58,6 +61,38 @@ export class AdminListComponent implements OnInit {
 
   goToInformation(activityId: number): void {
     this.router.navigate(['/activity-files', activityId]);
+  }
+
+  addGoogleDriveLink(activity: any) {
+    Swal.fire({
+      title: 'Enter the Google Drive link',
+      input: 'url',
+      inputLabel: 'Google Drive URL',
+      inputPlaceholder: 'Enter the link here...',
+      showCancelButton: true,
+      inputValidator: (value) => {
+        if (!value) {
+          return 'You need to enter a URL!';
+        }
+        return null;  // เพิ่มการคืนค่า null เมื่อไม่มีข้อผิดพลาด
+      }
+    }).then((result) => {
+      if (result.isConfirmed && result.value) {
+        const url = result.value;
+        const updatedActivity = { ...activity, informationLink: url };  // เพิ่มลิงก์ Google Drive
+
+        // ส่งคำขอ POST เพื่ออัปเดตข้อมูลกิจกรรม
+        this.http.post(`http://localhost:8080/api/activities/${activity.activityId}/update-link`, updatedActivity)
+          .subscribe(response => {
+            console.log('Link updated successfully:', response);
+            activity.informationLink = url;  // อัปเดต UI หลังจากการอัปเดตสำเร็จ
+            Swal.fire('Success', 'The Google Drive link has been added!', 'success');
+          }, error => {
+            console.error('Error updating link:', error);
+            Swal.fire('Error', 'There was an error updating the link', 'error');
+          });
+      }
+    });
   }
 
   // activities = [

@@ -23,6 +23,7 @@ h2 {
     flex-direction: column;
     row-gap: 30px; /* Reduced gap */
     justify-content: center;
+    padding-bottom: 20px;
 }
 
 .box {
@@ -32,16 +33,26 @@ h2 {
     gap: 20px; /* Reduced gap */
 }
 
+.box img {
+    width: 200px; /* Adjusted width for smaller screens */
+    height: 300px; /* Adjusted height for smaller screens */
+}
+
 .discipstion {
-    width: auto; /* Allow width to adjust */
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px; /* Reduced gap */
+     /* Allow width to adjust */
+    row-gap: 10px;
+    word-wrap: break-word; /* Reduced gap */
 }
 
 .discipstion p {
+    width: 500px;
+    height: 200px;
     margin-top: 0;
-    font-size: 14px; /* Adjusted font size */
+    font-size: 14px; 
+    white-space: wrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    /* Adjusted font size */
 }
 
 .discipstion h3 {
@@ -49,7 +60,7 @@ h2 {
 }
 
 .line {
-    border: solid rgb(118, 117, 117) 1px;
+    border: solid rgb(118, 117, 117) 0.5px;
     width: 100%; /* Ensure line takes full width */
 }
 

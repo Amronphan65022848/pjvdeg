@@ -6,7 +6,7 @@
     
     <div class="data-s">
         <div class="img-event">
-            <img src="../../../assets/imgs/active/activity-signup/phayao.png" alt="Description of image">
+            <img src="{{activity.activityImageUrl}}" alt="Description of image">
         </div>
 
 
@@ -17,7 +17,7 @@
             </div>
             
             <div class="right">
-                <h3>8/50</h3>
+                <h3>{{activity.totalvolunteerAmount}}/{{activity.volunteerAmount}}</h3>
             </div>
 
         </div>
@@ -25,12 +25,8 @@
         <div class="dis">
             <span>Activity Details</span>
             <br>
-            <span>
-                VDEG’s 9th Volunteer Camp is being held at Phagae Primary School.
-                <br>Date : March 16 - 22nd 2024
-                <br>There will be ice breaking activities, painting, and other activities that we will share during the
-                opening ceromony.
-            </span>
+            <p>{{activity.activityDescription}}</p>
+        
         </div>
 
 

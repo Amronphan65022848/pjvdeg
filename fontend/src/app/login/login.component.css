@@ -36,15 +36,7 @@ form{
     flex-direction: column;
     row-gap: 20px;
 }
-.body {
-    
-    /* width: 70%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    row-gap: 20px; */
-    
-}
+
 form button{
     align-items: center;
 }
@@ -103,6 +95,11 @@ button {
     
 
 }
+.text-register{
+    cursor: pointer;
+}
+
+
 @media (max-width: 1240px) {
    
    .Login{

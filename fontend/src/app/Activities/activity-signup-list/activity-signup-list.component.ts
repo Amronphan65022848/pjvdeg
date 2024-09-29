@@ -1,67 +1,38 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-activity-signup-list',
   templateUrl: './activity-signup-list.component.html',
   styleUrls: ['./activity-signup-list.component.css']
 })
-export class ActivitySignupListComponent {
-  activities = [
-    {
-      name: "Jane Doe",
-      tel: '095-0185468',
-      informationLink: '#',
-      filesLink: '#',
-      Contact:'065-4873125',
-    },
-    {
-      name: "John Doe",
-      tel: '065-0568745',
-      informationLink: '#',
-      filesLink: '#',
-      Contact:'065-7924779',
-    },
-    {
-      name: "Kathirine Smith",
-      tel: '098-9876515',
-      informationLink: '#',
-      filesLink: '#',
-      Contact:'098-6548746',
-    },
-    {
-      name: "Jenny White",
-      tel: '095-7561458',
-      informationLink: '#',
-      filesLink: '#',
-      Contact:'095-4687523',
-    },
-    {
-      name: "Frank Jones",
-      tel: '065-2549786',
-      informationLink: '#',
-      filesLink: '#',
-      Contact:'065-4987513',
-    },
-    {
-      name: "Rich West",
-      tel: '095-3197528',
-      informationLink: '#',
-      filesLink: '#',
-      Contact:'095-7824567',
-    },
-    {
-      name: "Sam Rogers",
-      tel: '098-7634549',
-      informationLink: '#',
-      filesLink: '#',
-      Contact:'098-4582136',
-    },
-    {
-      name: "Penny Green",
-      tel: '065-6455235',
-      informationLink: '#',
-      filesLink: '#',
-      Contact:'065-9654125',
-    },
-  ];
+export class ActivitySignupListComponent implements OnInit{
+
+  loading: boolean = true;
+  activities: any[] = [];
+  activityId: number = 0;
+
+  constructor(private http: HttpClient, private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    this.activityId = +this.route.snapshot.paramMap.get('activityId')!;
+    this.getActivity()
+  }
+
+
+  getActivity() {
+    this.http.get<any>('http://localhost:8080/api/participant-details/activity/' + this.activityId).subscribe({
+      next: (data) => {
+        this.activities = data;
+        console.log('Fetched activity:', this.activities);
+      },
+      error: (error) => {
+        console.error('Failed to fetch activity:', error);
+      },
+      complete: () => {
+        this.loading = false;
+      }
+    });
+  }
 }

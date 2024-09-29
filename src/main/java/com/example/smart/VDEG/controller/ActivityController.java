@@ -9,6 +9,7 @@ import com.example.smart.VDEG.entity.Activity;
 import com.example.smart.VDEG.service.ActivityService;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @CrossOrigin(origins = "*")
@@ -26,11 +27,50 @@ public class ActivityController {
         return ResponseEntity.ok(createdActivity);
     }
 
+    @PostMapping("/{activityId}/incrementVolunteer")
+    public ResponseEntity<Activity> incrementVolunteer(@PathVariable("activityId") Long activityId) {
+        Optional<Activity> updatedActivity = activityService.incrementVolunteerAmount(activityId);
+
+        if (updatedActivity.isPresent()) {
+            return ResponseEntity.ok(updatedActivity.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
+    @PostMapping("/{activityId}/update-link")
+    public ResponseEntity<Activity> updateInformationLink(
+            @PathVariable Long activityId,
+            @RequestBody String informationLink) {
+
+        Optional<Activity> updatedActivity = activityService.updateInformationLink(activityId, informationLink);
+
+        // ตรวจสอบว่ามีการอัปเดตข้อมูลสำเร็จหรือไม่
+        if (updatedActivity.isPresent()) {
+            return ResponseEntity.ok(updatedActivity.get());  // ส่งข้อมูลกลับถ้าอัปเดตสำเร็จ
+        } else {
+            return ResponseEntity.notFound().build();  // ส่ง 404 ถ้าไม่พบ Activity
+        }
+    }
+
     // ดึงข้อมูลกิจกรรมทั้งหมด
     @GetMapping
     public ResponseEntity<List<Activity>> getAllActivities() {
         List<Activity> activities = activityService.getAllActivities();
         return ResponseEntity.ok(activities);
+    }
+
+    @GetMapping("/active")
+    public ResponseEntity<List<Map<String, Object>>> getActiveActivities() {
+        List<Map<String, Object>> activeActivities = activityService.getActiveActivities();
+        return ResponseEntity.ok(activeActivities);
+    }
+
+    @GetMapping("/active/detail")
+    public ResponseEntity<List<Map<String, Object>>> getActiveDetail() {
+        List<Map<String, Object>> activeActivities = activityService.getActiveDetail();
+        return ResponseEntity.ok(activeActivities);
     }
 
     // ดึงข้อมูลกิจกรรมตาม ID

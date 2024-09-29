@@ -44,4 +44,9 @@ export class LoginComponent {
     event.preventDefault(); // ป้องกันการโหลดหน้าซ้ำ
     this.router.navigate(['/home']); // นำทางไปยังหน้า home
   }
+
+
+  navigateToRegister(){
+    this.router.navigate(['/register']);
+  }
 }

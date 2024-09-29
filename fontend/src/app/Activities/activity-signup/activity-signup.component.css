@@ -19,7 +19,18 @@
 }
 .data-s img {
     width: 100%;
+    height: 200px;
+    
+    object-fit: cover;
 }
 .dis{
+   
     margin-left: 20px;
+}
+
+.dis p{
+    width: 95%;
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

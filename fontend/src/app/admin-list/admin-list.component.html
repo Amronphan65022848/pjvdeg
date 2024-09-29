@@ -1,6 +1,6 @@
 <div class="content">
 
-  <button (click)="gotoAdmin()">New Activity +</button>
+  <button class="btn" (click)="gotoAdmin()">New Activity +</button>
 
   <div class="search-container">
     <i class="fas fa-bars menu-icon"></i>
@@ -11,7 +11,7 @@
 <div class="dtn">
   <div *ngIf="loading" class="loading-overlay">
     <mat-spinner></mat-spinner>
-</div>
+  </div>
   <h2 style="text-align:center;">Activity List</h2>
   <table>
 
@@ -30,8 +30,12 @@
         <td>{{ activity.activityId }}</td>
         <td>{{ activity.activityName }}</td>
         <td>{{ activity.startDate }} - {{ activity.endDate }} </td>
-        <td><a href="{{ activity.informationLink }}" target="_blank"><i class="fas fa-link"></i></a></td>
-        <td><a (click)="goToInformation(activity.activityId)" style="cursor:pointer;"><i class="fas fa-link"></i></a></td>
+        <td ><a (click)="goToInformation(activity.activityId)" style="cursor:pointer;"><i class="fas fa-link"></i></a>
+        </td>
+        <td *ngIf="!activity.informationLink">
+          <button (click)="addGoogleDriveLink(activity)">add link to google drive</button>
+        </td>
+        <td *ngIf="activity.informationLink"><a href="{{ activity.informationLink }}" target="_blank"><i class="fas fa-link"></i></a></td>
         <td>
           <label class="switch">
             <input type="checkbox" [(ngModel)]="activity.status" (change)="updateActivityStatus(activity)"
@@ -42,6 +46,4 @@
       </tr>
     </tbody>
   </table>
-
-
 </div>
