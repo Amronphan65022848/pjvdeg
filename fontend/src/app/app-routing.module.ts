@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'activity-sinup-list/:activityId', component: ActivitySignupListComponent },
   { path: 'admin', component: ActivityCreationAdminComponent },
   { path: 'admin-list', component: AdminListComponent },
-  { path: 'donation', component: DonationComponent },
+  { path: 'donation/:activityId', component: DonationComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'login-guest', component: LoginGuestComponent },
   { path: 'activity-files/:activityId', component: ActivityFilesComponent },

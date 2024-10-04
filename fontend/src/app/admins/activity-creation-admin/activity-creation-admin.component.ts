@@ -100,6 +100,7 @@ export class ActivityCreationAdminComponent {
                       this.http.post('http://localhost:8080/api/activities', formData).subscribe({  
                         next: (response) => {
                           console.log('Activity created successfully:', response);
+                          Swal.fire('success', 'Activity created successfully!', 'success');
                         },
                         error: (error) => {
                           console.error('Error creating activity:', error);
@@ -137,6 +138,7 @@ export class ActivityCreationAdminComponent {
                 this.http.post('http://localhost:8080/api/activities', formData).subscribe({  
                   next: (response) => {
                     console.log('Activity created successfully:', response);
+                    Swal.fire('success', 'Activity created successfully!', 'success');
                   },
                   error: (error) => {
                     console.error('Error creating activity:', error);

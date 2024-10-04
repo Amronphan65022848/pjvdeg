@@ -13,7 +13,7 @@
     </div>
   
     <div class="slider-img" #slider>
-      <img *ngFor="let activity of activities" [src]="activity.activityImageUrl" alt="Activity Image">
+      <img *ngFor="let activity of activities" [src]="activity.activityImageUrl" alt="Activity Image" (click)="navigateToSignup(activity.activityId)">
     </div>
   </div>
   

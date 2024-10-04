@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-current-activities-carousal',
@@ -9,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class CurrentActivitiesCarousalComponent implements OnInit {
   activities: any[] = []; // สร้าง array สำหรับเก็บกิจกรรม
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router: Router) { }
 
   ngOnInit() {
     this.getActiveActivities();
@@ -37,5 +38,10 @@ export class CurrentActivitiesCarousalComponent implements OnInit {
       const endDate = new Date(activity.endDate); // แปลง endDate เป็น Date object
       return today >= startDate && today <= endDate; // ตรวจสอบว่าวันนี้อยู่ในช่วงเวลา
     });
+  }
+
+  navigateToSignup(activityId: number) {
+    this.router.navigate(['/activity-signup', activityId]);
+    
   }
 }

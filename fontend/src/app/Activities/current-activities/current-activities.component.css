@@ -19,11 +19,15 @@ h2 {
 }
 
 .data {
-    display: flex;
+   
     flex-direction: column;
     row-gap: 30px; /* Reduced gap */
     justify-content: center;
     padding-bottom: 20px;
+}
+.data button{
+   width: 200px;
+    
 }
 
 .box {

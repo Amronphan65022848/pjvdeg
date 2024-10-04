@@ -38,6 +38,10 @@ export class CurrentActivitiesComponent implements OnInit {
     this.router.navigate(['/activity-signup', activityId]);
   }
 
+  navigateToDonation(activityId: number) {
+    this.router.navigate(['/donation', activityId]);
+  }
+
 
 
   
