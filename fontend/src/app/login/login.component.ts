@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http'; // Import HttpClient
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
@@ -17,6 +17,10 @@ export class LoginComponent {
 
   constructor(private http: HttpClient, private router: Router) {} // Inject HttpClient
 
+
+ngOnInit(): void {
+  this.checktoken()
+}
   onSubmit() {
     const formData = this.loginForm.value;
 
@@ -48,5 +52,15 @@ export class LoginComponent {
 
   navigateToRegister(){
     this.router.navigate(['/register']);
+  }
+
+  navigateToForgot(){
+    this.router.navigate(['/reset']);
+  }
+
+  checktoken(){
+    if(localStorage.getItem('token') != null){
+      this.router.navigate(['/home']);
+    } 
   }
 }

@@ -20,12 +20,17 @@ public class PersonService {
     private JwtUtil jwtUtil;
 
     public String login(String email, String password) {
-        Person person = personRepository.findByEmail(email);
-
-        if (person != null && person.getPassword().equals(password)) {
-            return jwtUtil.generateToken(person.getEmail(), person.getFirstName(), person.getLastName(), person.getEmail(), person.getRole(), person.getPhone(), person.getImageprofile());
+        Optional<Person> optionalPerson = personRepository.findByEmail(email);  // ใช้ Optional ในการจัดการค่าที่อาจไม่พบ
+        if (optionalPerson.isPresent()) {
+            Person person = optionalPerson.get();
+            if (person.getPassword().equals(password)) {
+                return jwtUtil.generateToken(person.getEmail(), person.getFirstName(), person.getLastName(),
+                        person.getEmail(), person.getRole(), person.getPhone(), person.getImageprofile());
+            } else {
+                throw new RuntimeException("Invalid password");
+            }
         } else {
-            throw new RuntimeException("Invalid username or password");
+            throw new RuntimeException("Email not found");
         }
     }
 
@@ -46,5 +51,22 @@ public class PersonService {
     // Delete a person by id
     public void deletePerson(Long id) {
         personRepository.deleteById(id);
+    }
+
+    public boolean existsByEmail(String email) {
+        Optional<Person> person = personRepository.findByEmail(email);
+        return person.isPresent();
+    }
+
+    public boolean updatePassword(String email, String newPassword) {
+        Optional<Person> optionalPerson = personRepository.findByEmail(email);
+        if (optionalPerson.isPresent()) {
+            Person person = optionalPerson.get();
+            person.setPassword(newPassword);  // Set new password
+            personRepository.save(person);    // Save updated person
+            return true;
+        } else {
+            throw new RuntimeException("Email not found");
+        }
     }
 }

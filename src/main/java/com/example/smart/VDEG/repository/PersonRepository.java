@@ -5,8 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.smart.VDEG.entity.Person;
 
+import java.util.Optional;
+
 
 public interface PersonRepository extends JpaRepository<Person, Long> {
 
-    Person findByEmail(String email);
+    Optional<Person> findByEmail(String email);
 }

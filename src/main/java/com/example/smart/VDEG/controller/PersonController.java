@@ -57,4 +57,30 @@ public class PersonController {
         personService.deletePerson(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/check-email")
+    public ResponseEntity<String> checkEmail(@RequestParam("email") String email) {
+        boolean exists = personService.existsByEmail(email);
+        if (exists) {
+            return ResponseEntity.ok("Email exists in the database.");
+        } else {
+            return ResponseEntity.status(404).body("Email not found.");
+        }
+    }
+
+    @PutMapping("/update-password")
+    public ResponseEntity<String> updatePassword(
+            @RequestParam("email") String email, 
+            @RequestParam("newPassword") String newPassword) {
+        try {
+            boolean success = personService.updatePassword(email, newPassword);
+            if (success) {
+                return ResponseEntity.ok("Password updated successfully.");
+            } else {
+                return ResponseEntity.status(400).body("Password update failed.");
+            }
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(400).body(e.getMessage());
+        }
+    }
 }
