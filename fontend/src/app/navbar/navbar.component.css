@@ -39,3 +39,8 @@ a{
     color: white;
     text-decoration: none  ;
 }
+
+.profileimg{
+    width: 60px;
+    height: 60px;
+}

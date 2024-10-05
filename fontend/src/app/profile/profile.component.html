@@ -38,20 +38,20 @@
 
             <div class="PG4">
                 <div class="left"> <b>Illness : Asthma  </b></div>
-                <div class="right"><b>Emergency Contact : 065-4873125</b></div>
+                <div class="right"><b>Emergency Contact : {{ user.contact }}</b></div>
                 
             </div>
             <div class="border"></div>
 
             <div class="PG4">
-                <div class="left"> <b>Allergies : Pollen </b></div>
-                <div class="right"><b>Religion : Muslim</b></div>
+                <div class="left"> <b>Allergies : {{ user.allergies}} </b></div>
+                <div class="right"><b>Religion : {{user.religion}}</b></div>
     
             </div>
             <div class="border"></div>
 
             <div class="PG4">
-                <div class="left"> <b>Food Allergies : Seafood </b></div>
+                <div class="left"> <b>Food Allergies : {{user.foodallergies}} </b></div>
 
             </div>
             <div class="border"></div>

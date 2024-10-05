@@ -15,7 +15,12 @@ export class RegisterComponent {
     password: '',
     firstName: '',
     lastName: '',
-    phone: ''
+    phone: '',
+    illness: '',
+    allergies: '',
+    religion: '',
+    foodallergies: '',
+    contact: '',
   };
 
 

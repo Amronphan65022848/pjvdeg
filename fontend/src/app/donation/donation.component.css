@@ -36,6 +36,7 @@ h1{
 }
 .person img {
     width: 350px;
+    height: 100px;
 }
 .person p {
     font-size: 14px;
@@ -91,6 +92,12 @@ h1{
 .SOFT{
     display: flex;
     flex-direction: column;
+}
+
+
+.iconimg{
+  width: 100px;
+  height: 150px;
 }
 
 table {

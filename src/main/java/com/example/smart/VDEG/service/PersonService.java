@@ -25,7 +25,7 @@ public class PersonService {
             Person person = optionalPerson.get();
             if (person.getPassword().equals(password)) {
                 return jwtUtil.generateToken(person.getEmail(), person.getFirstName(), person.getLastName(),
-                        person.getEmail(), person.getRole(), person.getPhone(), person.getImageprofile());
+                        person.getEmail(), person.getRole(), person.getPhone(), person.getImageprofile() ,person.getContact() ,person.getIllness(),person.getAllergies(),person.getReligion(),person.getFoodallergies());
             } else {
                 throw new RuntimeException("Invalid password");
             }

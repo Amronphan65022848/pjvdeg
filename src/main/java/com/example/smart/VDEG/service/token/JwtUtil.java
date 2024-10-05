@@ -7,6 +7,8 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
 import javax.crypto.SecretKey;
+
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -48,7 +50,7 @@ public class JwtUtil {
     }
 
     // สร้าง token โดยใช้ข้อมูลผู้ใช้
-    public String generateToken(String username, String firstName, String lastName, String email, String role, Long phone, String imageprofile) {
+    public String generateToken(String username, String firstName, String lastName, String email, String role, Long phone, String imageprofile, Long contact , String illness, String allergies , String religion , String foodallergies ) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("firstName", firstName);
         claims.put("lastName", lastName);
@@ -56,6 +58,12 @@ public class JwtUtil {
         claims.put("phone", phone);
         claims.put("imageprofile", imageprofile);
         claims.put("role", role);
+        claims.put("contact", contact);
+        claims.put("illness", illness);
+        claims.put("allergies", allergies);
+        claims.put("religion", religion);
+        claims.put("foodallergies", foodallergies);
+        
         return createToken(claims, username);
     }
 

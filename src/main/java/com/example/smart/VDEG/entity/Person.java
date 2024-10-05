@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import lombok.AllArgsConstructor;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -38,11 +39,30 @@ public class Person {
     @Column(nullable = false)
     private Long phone; 
 
+    @Column(nullable = false)
+    private Long contact; 
+
+    @Column(nullable = true)
+    private String illness;
+
+    @Column(nullable = true)
+    private String allergies;
+
+    @Column(nullable = false)
+    private String religion;
+
+    @Column(nullable = true)
+    private String foodallergies;
+
     @Column(nullable = true)
     private String imageprofile;
 
+    @Column(nullable = false)
+    private LocalDateTime Time;
+
     @PrePersist
     protected void onCreate() {
+        this.Time = LocalDateTime.now();
         if (this.role == null) {
             this.role = "user";
         }

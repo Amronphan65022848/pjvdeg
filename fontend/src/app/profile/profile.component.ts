@@ -19,7 +19,13 @@ export class ProfileComponent {
         lastName: payload.lastName,
         email: payload.email,
         phone: payload.phone,
-        profileImage: payload.imageprofile
+        profileImage: payload.imageprofile,
+        contact: payload.contact,
+        allergies: payload.allergies,
+        illness: payload.illness,
+        foodallergies: payload.foodallergies,
+        religion: payload.religion,
+        time: payload.time
       };
     }
   }
