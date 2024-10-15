@@ -1,3 +1,3 @@
 # สำหรับเเอดมิน 
-email admin
-password admin
+- email admin
+- password admin
